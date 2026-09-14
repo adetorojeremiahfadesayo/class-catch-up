@@ -31,6 +31,8 @@ The hardest part was preserving useful agent behavior without letting the model 
 - Durable, idempotent packet jobs with leases, retry bounds, and explicit failure states.
 - Twenty-three backend tests plus frontend lint and production build checks passing locally.
 - A real local Strands SDK custom-tool execution recorded over synthetic evidence.
+- A live local Strands packet run through Amazon Bedrock Nova 2 Lite that used scoped tools, passed deterministic validation, and produced a teacher-review draft.
+- A learner explanation page that presents the same approved packet as Watch, See, or Read while preserving source citations and shared progress.
 
 ## What we learned
 
@@ -38,11 +40,11 @@ An education agent should reduce coordination work while leaving educational jud
 
 ## What's next
 
-Run the bounded workflow with an account-authorized Amazon Bedrock model, validate PostgreSQL concurrency under worker restarts, deploy the portal for judge access, and conduct a teacher usability study before making learning or time-saving claims.
+Validate PostgreSQL concurrency under worker restarts, deploy the portal for judge access, and conduct a teacher usability study before making learning or time-saving claims.
 
 ## Honest demo note
 
-The submitted local demonstration uses synthetic school data and a clearly labeled fixture packet. The repository contains evidence of a real local Strands SDK custom-tool call. No model-provider-driven packet generation, production deployment, real student data, or measured learning-impact claim is represented as complete.
+The local demonstration uses synthetic school data and keeps fixture provenance explicit. The repository contains evidence of both a custom-tool-only Strands spike and one successful model-driven Strands packet run through Bedrock. Production deployment, real student data, PostgreSQL concurrency, and measured learning impact are not represented as complete.
 
 ## Submission checklist
 

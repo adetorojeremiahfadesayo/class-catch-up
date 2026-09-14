@@ -3,7 +3,14 @@ from datetime import UTC, datetime, timedelta
 from sqlalchemy import select
 
 from app import db as db_module
-from app.models import LessonOccurrence, PacketRevision, PacketJob, JobState
+from app.models import (
+    AgentRun,
+    JobState,
+    LessonOccurrence,
+    PacketJob,
+    PacketRevision,
+    RunOutcome,
+)
 from app.jobs import claim_next_job
 from app.packets import validate_packet_candidate
 from test_packet_approval import prepare_packet, login
@@ -111,7 +118,16 @@ def test_supervisor_terminates_overdue_child_and_records_failure(client, monkeyp
         job = PacketJob(tenant_id=packet.tenant_id, lesson_id=packet.lesson_id, lesson_revision=1, state=JobState.running, attempts=1, lease_until=datetime.now(UTC)+timedelta(seconds=120), idempotency_key="supervisor-timeout")
         db.add(job)
         db.flush()
+        run = AgentRun(
+            tenant_id=packet.tenant_id,
+            class_id=packet.class_id,
+            lesson_id=packet.lesson_id,
+            job_id=job.id,
+        )
+        db.add(run)
+        db.flush()
         job_id = job.id
+        run_id = run.id
 
     class OverdueChild:
         alive = True
@@ -131,3 +147,7 @@ def test_supervisor_terminates_overdue_child_and_records_failure(client, monkeyp
         job = db.get(PacketJob, job_id)
         assert job.state == JobState.retry_wait
         assert job.error_code == "job_deadline_exceeded"
+        run = db.get(AgentRun, run_id)
+        assert run.outcome == RunOutcome.failed
+        assert run.error_code == "job_deadline_exceeded"
+        assert run.completed_at is not None

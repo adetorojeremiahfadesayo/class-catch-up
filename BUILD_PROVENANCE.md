@@ -36,5 +36,6 @@ Prepared: 2026-09-12
 ## AI/provider provenance
 
 - `artifacts/runtime-spike/strands-tool-call.json` is a real local Strands SDK custom-tool execution over a synthetic excerpt.
-- No model-provider call was made because no provider credentials/model configuration were available.
+- `artifacts/runtime-spike/bedrock-strands-packet-run.json` records a successful local model-driven Strands run through Amazon Bedrock Nova 2 Lite over synthetic project-owned material. It called four scoped tools, passed deterministic validation, and saved a reviewable draft.
 - The seeded review packet has no `generation_run_id` and is labeled `fixture_or_teacher_edit` in the API/UI.
+- The Bedrock-generated packet has a persisted `generation_run_id` and is labeled `strands_run` in the API/UI.

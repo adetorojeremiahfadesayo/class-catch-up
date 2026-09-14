@@ -1,4 +1,7 @@
-/* Class Catch-Up — learner experience styles (students.html). */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4
+ * genre: editorial · tone: calm and encouraging · anchor: forest green · macrostructure: Long Document
+ * theme: existing warm paper · enrichment: source-grounded SVG + motion lesson · contrast: pass (46–50) · mobile: pass (36, 59, 61–69)
+ */
 
 .learner-pick { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--faint) }
 .learner-pick select { padding: 3px 7px; font-size: 12px }
@@ -26,6 +29,135 @@
 .back { margin-bottom: 12px }
 
 .pkt .panel-body { display: flex; flex-direction: column; gap: 8px }
+
+.lesson-formats {
+  display: grid;
+  gap: 14px;
+  margin-block-end: 24px;
+}
+.lesson-intro {
+  display: grid;
+  gap: 12px;
+  padding-block-end: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.lesson-intro h3 {
+  margin-block-start: 5px;
+  font: 500 clamp(23px, 6vw, 38px)/1.08 var(--serif);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.format-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.format-tabs button {
+  min-width: 0;
+  min-height: 44px;
+  padding-inline: 10px;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  background: transparent;
+  font: 600 12.5px/1 var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--fast), background var(--fast), border-color var(--fast), transform var(--fast);
+}
+.format-tabs button.on {
+  color: var(--ink);
+  background: var(--panel);
+  border-color: var(--line);
+}
+.format-tabs button:hover { color: var(--ink); border-color: var(--line) }
+.format-tabs button:active { transform: translateY(1px) }
+.format-tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px }
+.format-tabs button:disabled { opacity: .55; cursor: not-allowed }
+
+.format-panel { min-width: 0 }
+.lesson-player {
+  overflow: clip;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-lg);
+}
+.player-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  font: 500 11px/1 var(--mono);
+}
+.player-top .code { color: inherit }
+.player-track { height: 3px; background: color-mix(in srgb, var(--accent-ink) 18%, transparent) }
+.player-track i {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  transition: width var(--slow);
+}
+.lesson-scene {
+  min-height: 285px;
+  padding: clamp(24px, 6vw, 48px);
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: clamp(14px, 4vw, 28px);
+  align-content: center;
+  animation: lesson-scene-in var(--slow) both;
+}
+.scene-number { font: 500 12px/1 var(--mono); color: var(--gold) }
+.lesson-scene h3 { max-width: 24ch; margin-block-end: 14px; font: 500 clamp(27px, 7vw, 46px)/1.05 var(--serif); overflow-wrap: anywhere }
+.lesson-scene p { max-width: 60ch; font-size: clamp(14px, 2vw, 17px); line-height: 1.7 }
+.lesson-scene .cite { display: inline-block; margin-block-start: 12px; color: var(--accent-ink); opacity: .78 }
+.player-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 12px 14px 14px;
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.player-controls .btn { min-height: 44px }
+.player-controls .btn.primary { background: var(--panel); border-color: var(--panel); color: var(--ink) }
+
+.visual-recap {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--raised);
+  overflow: clip;
+}
+.visual-recap svg { display: block; width: 100%; height: auto; min-width: 0 }
+.visual-recap figcaption { padding: 10px 14px 14px; color: var(--muted); font-size: 12px }
+.map-lines { fill: none; stroke: var(--accent); stroke-width: 3; opacity: .45 }
+.map-core { fill: var(--accent) }
+.map-node { fill: var(--panel); stroke: var(--line); stroke-width: 2 }
+.map-kicker,.map-number,.map-source { font-family: var(--mono) }
+.map-kicker { fill: var(--gold); font-size: 13px; letter-spacing: 1.5px }
+.map-title { fill: var(--accent-ink); font: 600 18px var(--sans) }
+.map-number { fill: var(--accent); font-size: 14px }
+.map-label { fill: var(--ink); font: 600 17px var(--sans) }
+.map-source { fill: var(--muted); font-size: 12px }
+.visual-key { display: grid; gap: 0; list-style: none; margin-block-start: 10px; border-top: 1px solid var(--line-soft) }
+.visual-key li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding-block: 12px; border-bottom: 1px solid var(--line-soft) }
+.visual-key li > span { color: var(--accent); font: 500 11px/1.5 var(--mono) }
+.visual-key b { font-size: 13px }
+.visual-key p { margin-block-start: 3px; color: var(--muted); font-size: 12.5px; line-height: 1.55 }
+
+.read-lesson { max-width: 65ch }
+.lesson-lede { margin-block: 2px 16px; color: var(--muted); font: 400 17px/1.7 var(--serif) }
+.format-complete { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel) }
+.format-complete p { color: var(--muted); font-size: 12.5px }
+
+@keyframes lesson-scene-in {
+  from { opacity: 0; transform: translateY(8px) }
+  to { opacity: 1; transform: translateY(0) }
+}
 
 .s-step, .s-q {
   border: 1px solid var(--line); border-radius: var(--r);
@@ -70,4 +202,18 @@
 @media (max-width: 560px) {
   .hdr-meta .learner-pick { font-size: 0 }
   .hdr-meta .learner-pick select { font-size: 12px }
+}
+
+@media (min-width: 40rem) {
+  .lesson-intro { grid-template-columns: minmax(0, 1fr) auto; align-items: end }
+  .format-tabs { min-width: 250px }
+}
+
+@media (pointer: coarse) {
+  .format-tabs button, .player-controls .btn, .format-complete .btn { min-height: 48px }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-scene { animation: none }
+  .player-track i, .format-tabs button { transition-duration: .01ms }
 }

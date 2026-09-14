@@ -1,6 +1,6 @@
 # Implementation Status
 
-Last updated: 2026-09-12 05:44 WAT
+Last updated: 2026-09-14 21:04 WAT
 
 ## Current phase
 
@@ -15,7 +15,7 @@ Phase G - Verification and handoff (`complete with external blockers`)
 - Created a locked API environment with `strands-agents 1.55.1`.
 - **Live local behavior:** executed the registered `read_confirmed_source` custom tool through `Agent.tool` successfully. The persisted result has Strands status `success`, a generated tool-use ID, the registered tool list, UTC timestamps, and the returned citation fields. Evidence: `artifacts/runtime-spike/strands-tool-call.json`.
 - **Simulated data:** the source excerpt used by the spike is explicitly labeled `synthetic_teacher_owned_fixture`; it contains no student records.
-- **Not live:** no model/provider-driven agent loop has run. The proof records `model_driven_agent_run: false` and `provider_call.attempted: false`.
+- **Live local model behavior:** a Strands worker invoked Amazon Nova 2 Lite through Bedrock, called `read_confirmed_lesson`, `retrieve_material_segments`, `validate_packet`, and `save_packet_draft`, passed deterministic validation, and persisted a four-step, three-question review draft. Evidence: `artifacts/runtime-spike/bedrock-strands-packet-run.json`.
 - Confirmed the default system Python shims are broken, Node.js is absent, Docker CLI did not return, Git 2.54.0 is installed, and no AWS CLI is installed.
 - **Phase B implemented:** SQLAlchemy tenant/user/class/enrollment/session schema, Alembic migration, server-stored opaque sessions, HttpOnly cookies, password hashing, CSRF enforcement, teacher-owned class scoping, student enrollment scoping, and a synthetic six-learner seed command that requires caller-supplied passwords.
 - **Phase B tested locally:** `tests/test_auth_scope.py` passed 4 tests covering CSRF, teacher ownership, cross-tenant denial, and student/teacher role separation. Python source compilation and a SQLite migration smoke test also passed.
@@ -30,6 +30,7 @@ Phase G - Verification and handoff (`complete with external blockers`)
 - **Phase E tested locally:** 3 focused tests pass for stale approval, invalid out-of-scope citation, exact assignment publication, and provider-not-configured failure recording. The test packet is deterministic fixture data; it is not reported as model generated.
 - **Phase F implemented:** student-scoped assignment list/detail, answer-key and rationale stripping, assignment-bound source authorization, durable progress, server-scored attempts, idempotent help requests, teacher exception resolution, and teacher assignment state dashboard.
 - **Phase F UI implemented:** responsive React 19 + TypeScript + Vite teacher and student portals for login, Today/attendance, materials/topics/mappings, packet review/approval, exceptions, source-linked learning steps, attempts, progress, and help. Bun 1.4.2 was used because the installed Node 24.19 binary hung even for `--version`.
+- **Learner explanations implemented:** each approved missed-lesson packet can be presented as a paced Watch lesson, a source-grounded concept map, or a complete Read explanation without creating a second content source or exposing answer keys.
 - **Phase F tested locally:** the cross-role journey and packet regression set passed 4 tests. A newly created FastAPI client observed the previously persisted progress and help request. The frontend TypeScript/Vite production build passed.
 - **Phase G automated evidence:** the full backend suite passed 17 tests; Python compilation passed; all six Alembic migrations applied to a fresh database; the full synthetic seed succeeded; Oxlint passed with no findings; TypeScript and the Vite production build passed.
 - **Phase G runtime evidence:** the local API and Vite servers returned HTTP 200. Browser verification covered teacher login/Today, explicit review provenance, exact approval, Ada's assignment, source links, and absence of answer keys. Width checks at 1280 px and 390 px found no horizontal overflow.
@@ -42,15 +43,14 @@ Phase G - Verification and handoff (`complete with external blockers`)
 
 ## Unresolved issues
 
-- Bedrock is blocked: no AWS environment credentials, bearer token, shared credentials/config profile, region, or configured model ID is available. Other supported provider credentials and a local Ollama endpoint are also absent.
-- A real model-driven Strands run remains required before the packet-generation path can be reported as tested live.
+- Bedrock packet generation is tested live in the local synthetic demo with Nova 2 Lite. Credentials remain local and are not stored in the repository.
 - Node 24.19 was installed for the current user but its binary hangs in this environment. Bun provides the validated local frontend toolchain.
 - PostgreSQL integration has not run because Docker CLI is unresponsive. Phase B tests used SQLite and are not being reported as PostgreSQL evidence.
 - A real teacher usability review, production deployment, and public hackathon submission were not authorized or performed.
 
 ## Next action
 
-Provide AWS credentials, `AWS_REGION`, and an account-available `BEDROCK_MODEL_ID`, then run one model-driven worker job and preserve its `AgentRun` evidence. Restore Docker/PostgreSQL availability and run the PostgreSQL race/restart subset before any deployment claim.
+Restore Docker/PostgreSQL availability and run the PostgreSQL race/restart subset before any deployment claim. Record a public demo and complete the external submission steps.
 
 
 ## Review follow-up — 2026-09-13
@@ -68,6 +68,6 @@ Implemented the critique's core local workflow fixes:
 
 Browser evidence on synthetic local data: created a September 13 lesson; saved Ada absent with page 1 selected; reloaded and verified the absence persisted; previewed a source and all quiz answers; edited title into revision 2; published revision 2; signed in as Ada; completed steps, answered, submitted, and requested help; returned as teacher and resolved the request, retaining submitted status. No model generation occurred in this browser scenario.
 
-The project is improved locally, not declared submission-ready. Bedrock credentials/model access, PostgreSQL concurrency verification, teacher usability evidence, public repository/judging access, and a finished public demo video remain outstanding.
+The project has a public repository and one verified local Bedrock run, but it is not yet submission-complete. PostgreSQL concurrency verification, teacher usability evidence, judge-accessible deployment, and a finished public demo video remain outstanding.
 
 Final follow-up checks: 23 backend tests passed; bundled Node TypeScript, Oxlint and Vite build passed; Python compilation passed. A real supervisor child returned the expected provider-not-configured retry state.

@@ -69,6 +69,6 @@ To verify migrations independently, point `DATABASE_URL` at a clean database and
 
 ## Live Strands check
 
-`spikes/strands_tool_spike.py` proves the local Strands custom-tool path and writes `artifacts/runtime-spike/strands-tool-call.json`. It does not claim a model call.
+`spikes/strands_tool_spike.py` proves the local Strands custom-tool path and writes `artifacts/runtime-spike/strands-tool-call.json`. The separate `artifacts/runtime-spike/bedrock-strands-packet-run.json` records one successful local model-driven packet job.
 
 Start the worker only after `AWS_REGION` and `BEDROCK_MODEL_ID` are set and credentials have been verified. Without them, the worker records `provider_not_configured`, moves the job to visible retry state, and creates no packet.

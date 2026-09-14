@@ -7,13 +7,15 @@ Teachers begin with a persisted school setup: introduce themselves, choose a cla
 ## Truthful runtime status
 
 - A real local Strands SDK custom tool call has run successfully. See `artifacts/runtime-spike/strands-tool-call.json`.
-- That proof used an explicitly synthetic source excerpt and did not invoke a model provider.
-- A model-driven Bedrock run is blocked until credentials, a region, and an account-available model ID are supplied.
+- A model-driven local Strands run invoked Amazon Nova 2 Lite through Bedrock, used four scoped tools, passed deterministic validation, and saved a teacher-review draft. See `artifacts/runtime-spike/bedrock-strands-packet-run.json`.
+- The teacher then approved that exact draft and delivered it to a synthetic learner in the local browser journey.
 - No deployment, real student data, external messaging, or learning-impact claim exists.
 
 ## Review improvements (September 13)
 
 Teachers now select named topics and source pages, restore saved attendance, review every quiz answer and rationale, and edit a new packet revision before publication. Learners can restore progress, submit completed work, and request help that teachers can resolve. The worker has supervised time limits and lease renewal.
+
+Learners can open each published packet as a paced Watch lesson, a source-linked visual map, or a full Read explanation. All three modes use the same teacher-approved packet steps and completion state.
 
 See `IMPLEMENTATION_STATUS.md` for verified behavior and remaining external blockers.
 
@@ -77,7 +79,7 @@ The local Strands tool spike is reproducible with:
 uv run --directory services\api python spikes\strands_tool_spike.py
 ```
 
-Its output distinguishes the live SDK call from fixture data and from a model/provider call.
+Its output distinguishes the custom-tool-only spike from fixture data and from the separate Bedrock-backed packet run.
 
 See `docs/setup.md`, `docs/architecture.md`, `docs/evaluation.md`, `docs/limitations.md`, and `docs/demo.md` for the complete handoff.
 

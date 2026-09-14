@@ -8,7 +8,7 @@ from app.agent_runtime import run_packet_job
 from app.db import SessionLocal
 from app.jobs import claim_next_job
 from app.jobs import mark_job_failed
-from app.models import PacketJob, JobState
+from app.models import AgentRun, PacketJob, JobState, RunOutcome
 
 
 stopping = False
@@ -50,7 +50,20 @@ def supervise_job(job_id: str, attempt: int, deadline_seconds: int = 300) -> Non
     with SessionLocal() as db:
         job = db.get(PacketJob, job_id)
         if job is not None and job.state == JobState.running and job.attempts == attempt:
-            mark_job_failed(db, job, failure or "worker_exited_without_result")
+            error_code = failure or "worker_exited_without_result"
+            db.execute(
+                update(AgentRun)
+                .where(
+                    AgentRun.job_id == job_id,
+                    AgentRun.outcome == RunOutcome.running,
+                )
+                .values(
+                    outcome=RunOutcome.failed,
+                    error_code=error_code,
+                    completed_at=datetime.now(UTC),
+                )
+            )
+            mark_job_failed(db, job, error_code)
 
 
 def request_stop(_signal_number, _frame) -> None:

@@ -17,11 +17,11 @@ SQLite is used only for the current automated run. PostgreSQL-specific race beha
 
 | Case | Status | Evidence |
 |---|---|---|
-| Normal absence | Partial | Deterministic draft → approval → portal → progress/help passes. Model-driven draft blocked by credentials. |
+| Normal absence | Passed locally | A live local Strands + Bedrock draft passed validation, then teacher approval → learner portal → progress/help completed on synthetic data. |
 | Same date, two classes/periods | Tested in model/API structure | Unique class/date/period constraint and exact day query; P1/P2 isolation is exercised in daily tests. A PostgreSQL integration race test remains. |
 | Partly covered | Passed | Test confirms only the retained topic is stored and used by the queued job. |
 | Moved lesson / unconfirmed scope | Partial | Validation and explicit unconfirmed blocker implemented; unconfirmed test passes. Destination collision requires broader integration coverage. |
-| No supporting material | Implemented, provider path untested | `flag_content_gap` and non-publishable validation exist; live model invocation is blocked. |
+| No supporting material | Implemented, provider branch untested | `flag_content_gap` and non-publishable validation exist; the successful live model run used sufficient evidence. |
 | Invalid citation / wrong class source | Passed | Packet validation rejects out-of-scope citation; teacher and student source checks deny cross-scope access. |
 | Bad answer key / ambiguity | Passed structurally | Schema rejects absent answer keys; review edits create a new revision. Human ambiguity quality is not automated. |
 | Double save / double click / retry | Passed | Replayed idempotency key returns original receipt and leaves one job; publication is revision-state guarded. |
@@ -57,4 +57,11 @@ No teacher usability review has been conducted. The under-30-second daily intera
 - A real spawned supervisor child processed a local queued job with provider configuration intentionally empty, returning `retry_wait provider_not_configured`. This verifies the process wiring and truthful failure path, not Bedrock.
 - Browser verification used an isolated SQLite database and synthetic learners. Attendance persisted after browser reload. Source preview, quiz answer review, editing into revision 2, exact publication, student completion/answers/submission/help, and teacher resolution all worked. The dashboard retained submitted status after resolution.
 - Desktop screenshot inspection confirmed the Exceptions and progress layout. A new mobile-width inspection was not performed for this revision.
-- PostgreSQL races, live model generation, teacher time savings, production deployment, and public submission remain unverified.
+- PostgreSQL races, teacher time savings, production deployment, and public submission remain unverified. One local live model generation is recorded separately.
+
+## Live Bedrock evidence — 2026-09-14
+
+- Amazon Nova 2 Lite completed one local Strands packet job over synthetic teacher-approved material.
+- The persisted run used four scoped tools, passed deterministic citation validation, and saved a four-step, three-question draft.
+- Browser verification showed the `STRANDS RUN` provenance label, teacher approval, delivery to Ada's synthetic account, and the learner Watch/See/Read presentation.
+- A separate broader-scope retry failed visibly after invalid candidates and SQLite contention; no fixture replaced that failure. The local SQLite connection now waits for short write contention, and the supervisor closes any orphaned running `AgentRun` as failed. PostgreSQL concurrency remains unverified.

@@ -1,8 +1,8 @@
 # Known limitations
 
-## Blocked live verification
+## Remaining live verification
 
-- No AWS credentials, shared profile, Bedrock bearer token, region, or model ID were available. A real model-driven Strands run has not occurred.
+- One local Strands packet-generation run through Amazon Bedrock Nova 2 Lite succeeded on synthetic project-owned material. Broader provider reliability, quotas, cost behavior, and production credentials are not verified.
 - Docker CLI did not respond, so PostgreSQL integration/race and restart testing did not run. SQLite covered deterministic tests only.
 - The original system Node binary hung. The bundled Node runtime successfully compiled, linted, built, and served the updated frontend on September 13.
 

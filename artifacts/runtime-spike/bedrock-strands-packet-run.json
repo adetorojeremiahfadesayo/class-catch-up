@@ -1,0 +1,29 @@
+{
+  "evidence_type": "local_model_driven_strands_run",
+  "started_at_utc": "2026-09-14T19:36:08.521190Z",
+  "completed_at_utc": "2026-09-14T19:36:33.616431Z",
+  "environment": "local_development",
+  "data_classification": "synthetic_project_owned_demo_data",
+  "provider": "amazon_bedrock",
+  "model_id": "us.amazon.nova-2-lite-v1:0",
+  "region": "us-east-1",
+  "outcome": "succeeded",
+  "tool_sequence": [
+    "read_confirmed_lesson",
+    "retrieve_material_segments",
+    "validate_packet",
+    "save_packet_draft"
+  ],
+  "packet": {
+    "title": "Understanding Equivalent Fractions",
+    "status_after_generation": "needs_review",
+    "deterministic_validation": "passed",
+    "step_count": 4,
+    "question_count": 3
+  },
+  "limits": [
+    "This proves one local Strands and Bedrock packet-generation run.",
+    "It does not prove production deployment, PostgreSQL concurrency, or learning outcomes.",
+    "No credentials, account identifiers, student records, or uploaded private material are stored here."
+  ]
+}
