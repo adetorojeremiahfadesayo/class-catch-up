@@ -46,7 +46,7 @@ The submitted local demonstration uses synthetic school data and a clearly label
 
 ## Submission checklist
 
-- [ ] Public repository URL
+- [x] Public repository URL: https://github.com/adetorojeremiahfadesayo/class-catch-up
 - [x] MIT license in repository root
 - [x] README and setup instructions
 - [x] Architecture diagram: `docs/architecture.svg`
