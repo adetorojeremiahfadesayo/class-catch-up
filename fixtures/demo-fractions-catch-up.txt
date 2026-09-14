@@ -1,0 +1,47 @@
+DEMO CLASS MATERIAL
+JSS 1A Mathematics
+Fractions: equivalence, comparison, and addition
+
+Learning goals
+
+By the end of this lesson, learners should be able to:
+
+1. Recognize equivalent fractions.
+2. Compare fractions using a common denominator.
+3. Add fractions with the same denominator.
+
+Section 1 — Equivalent fractions
+
+Equivalent fractions are different fractions that represent the same amount. Multiplying or dividing the numerator and denominator by the same non-zero number keeps the value of a fraction unchanged.
+
+Example: 1/2 = 2/4 because both the numerator and denominator of 1/2 were multiplied by 2. A visual model would shade the same amount of a whole in both cases.
+
+Check: 3/6 is equivalent to 1/2 because dividing both 3 and 6 by 3 gives 1/2.
+
+Section 2 — Comparing fractions
+
+Fractions are easiest to compare when they use the same denominator. Convert the fractions to equivalent fractions with a common denominator, then compare their numerators.
+
+Example: compare 2/3 and 3/4. A common denominator is 12. The equivalent fractions are 8/12 and 9/12. Since 9 is greater than 8, 3/4 is greater than 2/3.
+
+Check: 5/8 is greater than 1/2 because 1/2 is equivalent to 4/8.
+
+Section 3 — Adding fractions
+
+When fractions have the same denominator, add the numerators and keep the denominator. Simplify the result when possible.
+
+Example: 2/7 + 3/7 = 5/7.
+
+Example with simplification: 1/6 + 2/6 = 3/6 = 1/2.
+
+Do not add the denominators. The denominator names the equal-sized parts, so it stays the same when those parts are combined.
+
+Practice
+
+1. Write one fraction equivalent to 2/5.
+2. Which is greater: 3/5 or 5/8? Show equivalent fractions with a common denominator.
+3. Calculate 3/10 + 4/10 and simplify if possible.
+
+Teacher note
+
+This is synthetic demonstration material created for Class Catch-Up. It contains no real learner information. Teachers must review extracted evidence and approve mappings before any generated packet is published.

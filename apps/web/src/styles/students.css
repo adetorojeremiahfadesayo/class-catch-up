@@ -1,0 +1,73 @@
+/* Class Catch-Up — learner experience styles (students.html). */
+
+.learner-pick { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--faint) }
+.learner-pick select { padding: 3px 7px; font-size: 12px }
+
+.intro-card { padding: 20px 22px; display: grid; gap: 7px; margin-bottom: 18px }
+.intro-card .dim { max-width: 60ch }
+
+.assign-list { display: grid; gap: 12px }
+.assign-card {
+  font: inherit; text-align: left; cursor: pointer; color: var(--ink);
+  padding: 15px 18px; display: grid; gap: 7px;
+  transition: border-color var(--fast), background var(--fast);
+}
+.assign-card:hover { border-color: var(--faint) }
+.assign-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px }
+.ac-top { display: flex; align-items: center; gap: 10px; justify-content: space-between; flex-wrap: wrap }
+.ac-top b { font-size: 14px }
+.ac-bar {
+  height: 5px; border-radius: 99px;
+  background: var(--raised); border: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+.ac-bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; transition: width var(--slow) }
+
+.back { margin-bottom: 12px }
+
+.pkt .panel-body { display: flex; flex-direction: column; gap: 8px }
+
+.s-step, .s-q {
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 13px 15px; margin-top: 4px;
+  display: grid; gap: 6px;
+}
+.s-step.done { border-color: color-mix(in srgb, var(--pos) 40%, var(--line)) }
+.s-step .step-head { display: flex; align-items: center; gap: 9px }
+.s-step .step-head .ix { font-size: 10px; color: var(--faint) }
+.s-step .step-head b { font-size: 13.5px }
+
+.s-q.right { border-color: color-mix(in srgb, var(--pos) 45%, var(--line)) }
+.s-q.wrong { border-color: color-mix(in srgb, var(--neg) 45%, var(--line)) }
+.s-opts { display: grid; gap: 5px; margin: 4px 0 }
+.s-opt {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 12.5px; color: var(--muted);
+  border: 1px solid var(--line-soft); border-radius: var(--r-sm);
+  padding: 7px 10px; cursor: pointer;
+  transition: border-color var(--fast), background var(--fast), color var(--fast);
+}
+.s-opt:hover { border-color: var(--faint); color: var(--ink) }
+.s-opt.on { border-color: var(--accent); background: var(--accent-soft); color: var(--ink) }
+.s-opt input { accent-color: var(--accent) }
+.s-q .btn { justify-self: start }
+.verdict { font-size: 12.5px; font-weight: 500 }
+.verdict.pos { color: var(--pos) }
+.verdict.neg { color: var(--neg) }
+
+.s-foot {
+  margin-top: 16px; border-top: 1px solid var(--line-soft);
+  padding-top: 16px; display: grid; gap: 14px; justify-items: start;
+}
+.help-box {
+  width: 100%; display: grid; gap: 7px; justify-items: start;
+  border: 1px dashed var(--line); border-radius: var(--r);
+  padding: 12px 14px;
+}
+.help-box label { font-size: 12px; font-weight: 600; color: var(--muted) }
+.help-box textarea { width: 100% }
+
+@media (max-width: 560px) {
+  .hdr-meta .learner-pick { font-size: 0 }
+  .hdr-meta .learner-pick select { font-size: 12px }
+}

@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: class_catchup
+      POSTGRES_USER: class_catchup
+      POSTGRES_PASSWORD: class_catchup_local_only
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U class_catchup"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - class-catch-up-postgres:/var/lib/postgresql/data
+
+volumes:
+  class-catch-up-postgres:

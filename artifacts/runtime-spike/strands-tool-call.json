@@ -1,0 +1,33 @@
+{
+  "proof_type": "live_local_strands_sdk_tool_execution",
+  "model_driven_agent_run": false,
+  "provider_call": {
+    "attempted": false,
+    "reason": "No AWS or other supported model-provider credentials and no configured model ID were available."
+  },
+  "strands_agents_version": "1.55.1",
+  "registered_tools": [
+    "read_confirmed_source"
+  ],
+  "tool_events": [
+    {
+      "tool": "read_confirmed_source",
+      "segment_id": "segment_fixture_equivalent_fractions_p1",
+      "called_at": "2026-09-12T03:36:03.133503+00:00"
+    }
+  ],
+  "tool_result": {
+    "toolUseId": "tooluse_read_confirmed_source_974550337",
+    "status": "success",
+    "content": [
+      {
+        "text": "{\"segment_id\": \"segment_fixture_equivalent_fractions_p1\", \"page_1_based\": 1, \"supporting_excerpt\": \"Equivalent fractions name the same amount even when their numerators and denominators are different.\", \"source_kind\": \"synthetic_teacher_owned_fixture\"}"
+      }
+    ]
+  },
+  "data_classification": {
+    "student_records": "none",
+    "source_material": "synthetic_teacher_owned_fixture"
+  },
+  "completed_at": "2026-09-12T03:36:03.166948+00:00"
+}

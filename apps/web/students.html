@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%232e5c40%27/%3E%3Ctext x=%2716%27 y=%2721%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-size=%2714%27 fill=%27%23fbf9f2%27%3EC%3C/text%3E%3C/svg%3E">
+<title>Class Catch-Up · Assignments</title>
+<style>
+/* The React mount point must not add a box of its own: body itself is the
+   flex / grid container, and an extra <div id="root"> in between breaks the
+   height:100% reference chain — a full-viewport layout would grow with its
+   content instead (a tall chart container makes ECharts draw a dozen
+   screens of chart). display:contents keeps it boxless, preserving the
+   direct body-to-layout relationship. */
+#root{display:contents}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/roster-entry.tsx"></script>
+</body>
+</html>
