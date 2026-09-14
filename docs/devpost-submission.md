@@ -55,4 +55,5 @@ Each new browser receives a fresh synthetic learner assignment. Reloading the sa
 - Repository: https://github.com/adetorojeremiahfadesayo/class-catch-up
 - Live demo: https://pay-cave-provider-dress.trycloudflare.com
 - Architecture upload: `docs/architecture.png`
+- Project thumbnail: `docs/submission-thumbnail.png`
 - Suggested gallery images: `docs/screenshots/teacher-territory-onboarding.png`, `docs/screenshots/teacher-review.png`, and `docs/screenshots/student-mobile.png`
