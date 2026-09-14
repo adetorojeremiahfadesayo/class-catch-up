@@ -1,6 +1,6 @@
 # Implementation Status
 
-Last updated: 2026-09-14 21:04 WAT
+Last updated: 2026-09-15 00:31 WAT
 
 ## Current phase
 
@@ -46,11 +46,11 @@ Phase G - Verification and handoff (`complete with external blockers`)
 - Bedrock packet generation is tested live in the local synthetic demo with Nova 2 Lite. Credentials remain local and are not stored in the repository.
 - Node 24.19 was installed for the current user but its binary hangs in this environment. Bun provides the validated local frontend toolchain.
 - PostgreSQL integration has not run because Docker CLI is unresponsive. Phase B tests used SQLite and are not being reported as PostgreSQL evidence.
-- A real teacher usability review, production deployment, and public hackathon submission were not authorized or performed.
+- A real teacher usability review, durable production deployment, and public hackathon submission have not been completed.
 
 ## Next action
 
-Restore Docker/PostgreSQL availability and run the PostgreSQL race/restart subset before any deployment claim. Record a public demo and complete the external submission steps.
+Grant a workload role permission to deploy the container and invoke Bedrock, then run the PostgreSQL race/restart subset. Upload the verified demo video and complete the external submission steps.
 
 
 ## Review follow-up — 2026-09-13
@@ -68,6 +68,12 @@ Implemented the critique's core local workflow fixes:
 
 Browser evidence on synthetic local data: created a September 13 lesson; saved Ada absent with page 1 selected; reloaded and verified the absence persisted; previewed a source and all quiz answers; edited title into revision 2; published revision 2; signed in as Ada; completed steps, answered, submitted, and requested help; returned as teacher and resolved the request, retaining submitted status. No model generation occurred in this browser scenario.
 
-The project has a public repository and one verified local Bedrock run, but it is not yet submission-complete. PostgreSQL concurrency verification, teacher usability evidence, judge-accessible deployment, and a finished public demo video remain outstanding.
+The project has a public repository and one verified local Bedrock run, but it is not yet submission-complete. PostgreSQL concurrency verification, teacher usability evidence, durable judge-accessible deployment, and public video upload remain outstanding.
 
 Final follow-up checks: 24 backend tests passed; bundled Node TypeScript, Oxlint and Vite build passed; Python compilation passed. A real supervisor child returned the expected provider-not-configured retry state. Development demo learners are now isolated per browser: a clean browser receives one untouched assignment, while the same browser retains its server-side progress.
+
+## Deployment follow-up — 2026-09-15
+
+- **Deployment packaging implemented:** the root container builds the React client, serves the UI and `/api` from FastAPI on one origin, migrates and idempotently initializes synthetic data, and runs the packet worker. Production demo access is controlled separately with `DEMO_MODE=true` and secure cookies.
+- **Temporary public runtime tested live:** a Cloudflare Quick Tunnel returned HTTP 200 for the teacher page, learner page, and `/api/health`; the production demo endpoint issued a teacher session cookie. This tunnel is temporary and depends on the local processes remaining online, so it is not durable cloud hosting.
+- **AWS hosting blocked by current IAM permissions:** the configured identity can invoke Bedrock, but creation or required access was denied for App Runner, ECS, Lambda, RDS, S3, Amplify, Lightsail, CloudFormation, ECR, and Elastic Beanstalk storage. No durable AWS web deployment is claimed.

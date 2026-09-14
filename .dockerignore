@@ -1,0 +1,10 @@
+.git
+.env
+artifacts
+**/.venv
+**/node_modules
+**/dist
+**/.pytest_cache
+**/__pycache__
+**/*.db
+**/materials-private

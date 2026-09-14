@@ -111,7 +111,8 @@ def demo_session(
     db: Session = Depends(get_db),
 ):
     """Enter a seeded role without credentials in local demo mode."""
-    if get_settings().app_environment != "development":
+    settings = get_settings()
+    if settings.app_environment != "development" and not settings.demo_mode:
         raise HTTPException(status_code=404)
     if role is Role.student:
         user, visitor_token = isolated_demo_student(db, demo_visitor)

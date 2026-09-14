@@ -10,6 +10,7 @@ class Settings(BaseSettings):
         "postgresql+psycopg://class_catchup:class_catchup@localhost:5432/class_catchup"
     )
     app_environment: str = "development"
+    demo_mode: bool = False
     cookie_secure: bool = False
     session_hours: int = 12
     default_timezone: str = "Africa/Lagos"

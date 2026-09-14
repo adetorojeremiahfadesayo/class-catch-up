@@ -65,6 +65,21 @@ bun run dev
 
 The development client proxies `/api` to `http://127.0.0.1:8000`. Use `npm install` and `npm run dev` instead if Node is healthy.
 
+## Container deployment
+
+The root `Dockerfile` builds the two-page React client and serves it with the FastAPI API on one origin. On startup it applies migrations, initializes the synthetic demo only when the database is empty, starts the durable packet worker, and listens on `PORT` (default `8080`).
+
+```powershell
+docker build -t class-catch-up .
+docker run --rm -p 8080:8080 `
+  -e AWS_REGION=us-east-1 `
+  -e BEDROCK_MODEL_ID=us.amazon.nova-2-lite-v1:0 `
+  -v class-catch-up-data:/data `
+  class-catch-up
+```
+
+For a public demo, keep `APP_ENVIRONMENT=production`, `DEMO_MODE=true`, and `COOKIE_SECURE=true`. Mount `/data` for durable SQLite demo state, or replace `DATABASE_URL` with a managed PostgreSQL connection. Give the workload an AWS IAM role with only the required Bedrock model invocation permission; do not copy long-term AWS access keys into the image or repository.
+
 ## Focused validation
 
 ```powershell

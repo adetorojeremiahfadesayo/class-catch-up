@@ -9,4 +9,6 @@ dist/
 materials-private/
 artifacts/*.log
 artifacts/review-smoke-materials/
+artifacts/deploy-smoke-materials/
+artifacts/tools/
 .playwright-cli/
