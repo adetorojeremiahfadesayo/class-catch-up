@@ -83,7 +83,7 @@ Each teacher workspace page ends with a sequential hand-off: Materials continues
 
 ## Student interface
 
-The student experience opens on Assignments. It may show the teacher introduction and school context, followed by assignment cards.
+The student experience opens on Assignments. It may show the teacher introduction and school context, followed by assignment cards. In development demo mode, each browser receives its own synthetic learner and one untouched assignment. `Not opened`, `Opened`, `In progress`, and `Submitted` are plain-language views of server-owned assignment state. Progress persists for that browser, while a browser without the demo visitor cookie starts fresh.
 
 Opening an assignment first offers three explanation formats derived from the same approved packet content: Watch is a paced, playable lesson; See is an SVG concept map with a readable key; Read is the full source-linked lesson. All three formats preserve the packet citations and share the same explicit step-completion state. Questions follow the explanation. Student APIs must omit answer keys and teacher rationale. Progress must restore after reload. Submission requires all required steps and questions. Help requests should be visible to the teacher in Exceptions.
 

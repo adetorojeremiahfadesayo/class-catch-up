@@ -65,3 +65,4 @@ No teacher usability review has been conducted. The under-30-second daily intera
 - The persisted run used four scoped tools, passed deterministic citation validation, and saved a four-step, three-question draft.
 - Browser verification showed the `STRANDS RUN` provenance label, teacher approval, delivery to Ada's synthetic account, and the learner Watch/See/Read presentation.
 - A separate broader-scope retry failed visibly after invalid candidates and SQLite contention; no fixture replaced that failure. The local SQLite connection now waits for short write contention, and the supervisor closes any orphaned running `AgentRun` as failed. PostgreSQL concurrency remains unverified.
+- The full suite now passes 24 tests, including browser-isolated demo learners: the same browser preserves `Opened` progress and a clean browser receives a distinct `Not opened` assignment.

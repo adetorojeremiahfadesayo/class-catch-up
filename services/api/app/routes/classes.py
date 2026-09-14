@@ -115,6 +115,7 @@ def list_roster(
         .where(
             Enrollment.tenant_id == principal.user.tenant_id,
             Enrollment.class_id == class_id,
+            User.username.not_like("demo-visitor-%"),
         )
     ).all()
     return [

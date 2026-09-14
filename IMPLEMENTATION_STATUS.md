@@ -70,4 +70,4 @@ Browser evidence on synthetic local data: created a September 13 lesson; saved A
 
 The project has a public repository and one verified local Bedrock run, but it is not yet submission-complete. PostgreSQL concurrency verification, teacher usability evidence, judge-accessible deployment, and a finished public demo video remain outstanding.
 
-Final follow-up checks: 23 backend tests passed; bundled Node TypeScript, Oxlint and Vite build passed; Python compilation passed. A real supervisor child returned the expected provider-not-configured retry state.
+Final follow-up checks: 24 backend tests passed; bundled Node TypeScript, Oxlint and Vite build passed; Python compilation passed. A real supervisor child returned the expected provider-not-configured retry state. Development demo learners are now isolated per browser: a clean browser receives one untouched assignment, while the same browser retains its server-side progress.

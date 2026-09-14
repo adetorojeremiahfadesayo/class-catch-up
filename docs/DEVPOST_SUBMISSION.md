@@ -29,7 +29,7 @@ The hardest part was preserving useful agent behavior without letting the model 
 - A coherent teacher-to-learner workflow with responsive teacher and student interfaces.
 - Source and page selection, stable citation segments, immutable revisions, exact-hash approval, and scoped learner access.
 - Durable, idempotent packet jobs with leases, retry bounds, and explicit failure states.
-- Twenty-three backend tests plus frontend lint and production build checks passing locally.
+- Twenty-four backend tests plus frontend lint and production build checks passing locally.
 - A real local Strands SDK custom-tool execution recorded over synthetic evidence.
 - A live local Strands packet run through Amazon Bedrock Nova 2 Lite that used scoped tools, passed deterministic validation, and produced a teacher-review draft.
 - A learner explanation page that presents the same approved packet as Watch, See, or Read while preserving source citations and shared progress.

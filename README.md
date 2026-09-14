@@ -17,6 +17,8 @@ Teachers now select named topics and source pages, restore saved attendance, rev
 
 Learners can open each published packet as a paced Watch lesson, a source-linked visual map, or a full Read explanation. All three modes use the same teacher-approved packet steps and completion state.
 
+The development demo isolates learner progress by browser. A first-time visitor receives one synthetic assignment marked `Not opened`; reloads keep that visitor's server-side progress, while a new browser starts with a fresh synthetic learner record.
+
 See `IMPLEMENTATION_STATUS.md` for verified behavior and remaining external blockers.
 
 Future coding agents should begin with `AGENTS.md`. The current teacher/student journeys and visual contract are documented in `UI_INFO.md`.

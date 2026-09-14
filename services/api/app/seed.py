@@ -8,6 +8,8 @@ from app.auth import password_hasher
 from app.db import SessionLocal
 from app.materials import extract_pdf, sha256_bytes, stable_segment_id
 from app.models import (
+    Assignment,
+    AssignmentState,
     Attendance,
     AttendanceStatus,
     CoverageStatus,
@@ -17,6 +19,7 @@ from app.models import (
     MappingProposal,
     MappingStatus,
     Material,
+    PacketStatus,
     Role,
     SchoolClass,
     Segment,
@@ -271,12 +274,25 @@ def seed_demo() -> None:
         excerpt = (
             "Equivalent fractions name the same amount using different numbers."
         )
-        save_packet_draft(
+        packet = save_packet_draft(
             db,
             review_lesson,
             fixture_packet(segments[0].id, excerpt),
             expected_lesson_revision=1,
             generation_run_id=None,
+        )
+        packet.status = PacketStatus.published
+        packet.reviewer_id = teacher.id
+        packet.approved_hash = packet.content_hash
+        db.add(
+            Assignment(
+                tenant_id=tenant.id,
+                class_id=school_class.id,
+                student_id=enrollments["Ada"].student_id,
+                lesson_id=review_lesson.id,
+                packet_revision_id=packet.id,
+                state=AssignmentState.assigned,
+            )
         )
 
 
@@ -284,5 +300,5 @@ if __name__ == "__main__":
     seed_demo()
     print(
         "Created synthetic demo class, six learners, fractions material, "
-        "approved mappings, today's occurrence, and one fixture review packet."
+        "approved mappings, today's occurrence, and one fresh learner assignment."
     )
