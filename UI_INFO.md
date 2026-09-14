@@ -70,12 +70,14 @@ Teacher navigation:
 
 | Destination | Purpose |
 | --- | --- |
-| Materials | Upload PDF/TXT sources, define topic sequence, inspect extracts, and approve mappings. |
+| Materials | Upload PDF/TXT sources, define topic sequence, inspect extracts, approve mappings, and queue one source-grounded catch-up job for an absent learner. |
 | Review | Inspect generated packet content, citations, answers, rationales, revisions, and publication state. |
 | Exceptions | Resolve missing evidence, failed preparation, and learner help requests. |
 | School Setup | Reopen teacher, class, school-system, year, and timezone settings. |
 
 The Today page is intentionally absent from current navigation. Do not restore it without an explicit product decision and a complete flow review.
+
+The Materials page contains the compact replacement for the former daily trigger. “Prepare catch-up” records the selected lesson date and period, uses only approved topic mappings, records one selected synthetic learner absent, records the remaining roster present, and queues the durable Strands packet job. A queued state is not a successful model run; Review must show `STRANDS RUN` before the packet can be described that way.
 
 Each teacher workspace page ends with a sequential hand-off: Materials continues to Review, Review continues to Exceptions, and Exceptions opens the Student view. Keep these bottom actions visible after the page content and label the destination explicitly.
 
