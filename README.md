@@ -2,9 +2,7 @@
 
 <div align="center">
 
-![Class Catch-Up teacher school setup](docs/screenshots/teacher-territory-onboarding.png)
-
-### Teacher-reviewed catch-up work grounded in the exact lesson material a learner missed.
+### Teacher-reviewed guided-learning grounded in the exact lesson material a learner missed.
 
 [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -24,7 +22,7 @@
 
 | Item | Details |
 | --- | --- |
-| Product | A catch-up packet workflow for a learner who missed a lesson |
+| Product | A guided-learning workflow for a learner who missed a lesson |
 | Demo video | [Watch the Class Catch-Up walkthrough](https://youtu.be/IRaRHKPC-sI) |
 | Main workflow | Confirm lesson coverage -> generate a cited draft -> teacher review -> publish -> learner completes and requests help |
 | AI boundary | Strands agent with five server-scoped tools; teacher approval is always required |
@@ -36,7 +34,7 @@
 
 When a learner misses a lesson, catch-up work is often generic or incomplete. A teacher needs to reconstruct what was actually covered, find the right material, create a clear explanation and practice, check it, deliver it, and follow up when the learner gets stuck.
 
-Generic AI worksheets can be quick, but they can lose the essential context: the real class source, the pages actually taught, and the teacher's judgment.
+Generic AI worksheets can be quick, but they can lose the essential context: the real class source, the pages actually taught, and the teacher's judgment. The learner studies through AI generated videos, images or texts, submits work, or requests help, the agent also helps as he works
 
 ## The solution
 
@@ -49,7 +47,7 @@ Teacher uploads lesson material
   -> queues a bounded Strands packet job
   -> reviews the cited draft and exact revision
   -> approves and publishes it
-  -> learner studies, submits work, or requests help
+  -> learner studies through AI generated videos, images or texts, submits work, or requests help, the agent also helps as he works
 ```
 
 ## How it works
@@ -65,11 +63,6 @@ Teacher uploads lesson material
 ## Visual tour
 
 <div align="center">
-
-| Teacher setup | Teacher review | Learner assignment |
-| :---: | :---: | :---: |
-| ![Teacher school setup](docs/screenshots/teacher-territory-onboarding.png) | ![Teacher packet review](docs/screenshots/teacher-review.png) | ![Student assignment on a mobile viewport](docs/screenshots/student-mobile.png) |
-| *Choose school context and class* | *Inspect provenance, citations, and the draft* | *Learn from an approved packet and complete it* |
 
 </div>
 
@@ -271,18 +264,6 @@ Read [evaluation evidence](docs/evaluation.md) for the acceptance matrix and its
 | [Known limitations](docs/limitations.md) | Product, provider, security, and deployment limitations |
 | [Implementation status](IMPLEMENTATION_STATUS.md) | Verified implementation work, evidence, and remaining blockers |
 | [UI reference](UI_INFO.md) | Teacher and learner interface contract |
-
-## Current scope and limitations
-
-Class Catch-Up is intentionally honest about what is and is not proven:
-
-- The project has **one recorded local Bedrock packet-generation run** over synthetic project-owned material; provider reliability, quotas, cost behavior, and production credentials are not established.
-- PostgreSQL integration/race behavior remains unverified in the recorded environment; SQLite supports the local deterministic test path and is not a production target.
-- PDF extraction supports text-based PDFs only; scanned documents are surfaced as `needs_text`, not silently OCR'd.
-- Curriculum standards, timetable/roster CSV imports, messaging, LMS integration, parent accounts, and automatic release are not implemented.
-- No durable public deployment, real teacher study, real student data, or learning-outcome claim is represented.
-
-See [known limitations](docs/limitations.md) for the full list and [implementation status](IMPLEMENTATION_STATUS.md) for current evidence.
 
 ## License
 
